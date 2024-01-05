@@ -1,0 +1,35 @@
+.header {
+  background-color: rgba(19, 35, 47, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  padding: 0, 0, 3rem, 8rem;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+  /* width: 100vh; */
+}
+
+.header > div {
+  h2 {
+    text-transform: uppercase;
+    color: #1ab188;
+    font-weight: 400;
+  }
+}
+
+.header > article {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.header > article > a {
+  /* Replace these styles with your actual styledText and myButton mixins or styles */
+  text-transform: uppercase;
+  padding: 20px;
+  /* Other styles for styledText */
+  /* Other styles for myButton */
+}
+.active {
+  color: #63fa0c;
+}
