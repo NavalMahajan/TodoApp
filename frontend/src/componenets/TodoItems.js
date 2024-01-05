@@ -1,42 +1,73 @@
 // import { useContext } from 'react'
 // import TodoContext from '../context/Todos/TodoContext';
 import "./Todoitem.css";
-
+import TodoContext from "../context/Todos/TodoContext";
+import "./Todoitem.css";
+import { useContext, useState } from "react";
 const Todoitem = (props) => {
-  // const context = useContext(TodoContext);
-  // const { deleteTodo } = context;
-  // console.log(props);
+  const context = useContext(TodoContext);
+  const { deleteTodo, editTodo } = context;
   const Todo = props.todo;
-  // console.log(Todo._id);
+  const [isEditing, setIsEditing] = useState(false);
+  const [updatedContent, setUpdatedContent] = useState(Todo.content);
 
-  // if (!Todo[0]) {
-  //     console.error('Todo is undefined or null.');
-  //     return null; // or render a placeholder, return an empty component, or handle it in another way
-  // }
-  // useEffect(() => {
-  //     const tooltips = document.querySelectorAll('[data-toggle="tooltip"]');
-  //     tooltips.forEach((tooltip) => new window.bootstrap.Tooltip(tooltip));
-  // }, []);
-  // const handleDeleteClick = () => {
-  //     // Hide the tooltip when the "Delete" icon is clicked
-  //     // const deleteIcon = document.querySelector('.fa-circle-minus');
-  //     // const tooltip = event.currentTarget._tippy;
-  //     // if (tooltip) {
-  //     //   tooltip.hide();
-  //     // }
-  //     const tooltips = document.getElementsByClassName('custom-tooltip');
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
 
-  //     // Convert the HTMLCollection to an array and iterate through each element
-  //     Array.from(tooltips).forEach((tooltip) => {
-  //         tooltip.style.display = 'none';
-  //     });
-  //     deleteTodo(Todo._id);
-  // };
+  const handleUpdateClick = () => {
+    // Perform the update logic, for example, call an editTodo function
+    // Pass the updatedContent and Todo._id to the function
+    // After successfully updating, set isEditing to false
+    editTodo(Todo._id, updatedContent);
+    setIsEditing(false);
+  };
+  const handleDeleteClick = () => {
+    deleteTodo(Todo._id);
+  };
+
   return (
     <>
       <div className="todo-card">
         <div className="card-body">
-          <p className="card-title"> {Todo.content}</p>
+          {isEditing ? (
+            <>
+              <input
+                className="editable"
+                style={{
+                  color: "black",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                  borderRadius: "8px",
+                  height: "45px",
+                  width: "98%",
+                }}
+                type="text"
+                value={updatedContent}
+                onChange={(e) => setUpdatedContent(e.target.value)}
+              />
+              <button
+                type="submit"
+                onClick={handleUpdateClick}
+                className="btn3"
+              >
+                Update
+              </button>
+            </>
+          ) : (
+            <>
+              <p className="card-title">{Todo.content}</p>
+              <button
+                type="submit"
+                onClick={handleDeleteClick}
+                className="btn2"
+              >
+                Delete
+              </button>
+              <button type="submit" onClick={handleEditClick} className="btn3">
+                Edit
+              </button>
+            </>
+          )}
         </div>
       </div>
     </>

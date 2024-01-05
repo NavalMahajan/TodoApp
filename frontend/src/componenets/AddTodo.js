@@ -3,19 +3,17 @@ import TodoContext from "../context/Todos/TodoContext";
 import "./AddTodo.css";
 const AddTodo = () => {
   const context = useContext(TodoContext);
-  const { addNote } = context;
-
-  const [note, setNote] = useState({
-    title: "",
-    description: "",
-    tag: "default",
-  });
+  const { Todos, addTodo } = context;
+  const [val, setval] = useState("");
+  // const [Todos, addTodo] = useState({
+  //   context: ""
+  // });
   const handleAddNote = (e) => {
     e.preventDefault();
-    addNote(note.title, note.description, note.tag);
+    addTodo(val, "blackk");
   };
   const OnchangeInput = (e) => {
-    setNote({ ...note, [e.target.name]: e.target.value });
+    setval(e.target.value);
   };
   return (
     <div className="todos">
@@ -28,14 +26,10 @@ const AddTodo = () => {
             id="title"
             name="title"
             aria-describedby="emailHelp"
-            // onChange={OnchangeInput}
+            value={val}
+            onChange={OnchangeInput}
           />
         </div>
-
-        {/* <div className="mb-3">
-                    <label htmlFor="tag" className="form-label">Tag</label>
-                    <input type="text" className="form-control" id="tag" name="tag" />
-                </div> */}
         <button type="submit" className="btn " onClick={handleAddNote}>
           Add Note
         </button>

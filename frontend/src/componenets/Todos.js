@@ -22,7 +22,6 @@ const Todos = () => {
       <AddTodo />
       <div className="todos">
         <h3>My Todos</h3>
-        {/* <Todoitem key={Todos._id} Todos={Todos} /> */}
 
         {Todos.map((Todo) => {
           console.log(Todo._id, "yooo");

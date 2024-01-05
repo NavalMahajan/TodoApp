@@ -44,59 +44,53 @@ const Header = () => {
 
   return (
     <>
-      <nav className="header">
-        <div>
-          <h2>Todo App.</h2>
-        </div>
-        {/* <article>
-          <Link to={"/"}>Home</Link>
-          <Link to={"/profile"}>Profile</Link>
-          {isAuthenticated ? (
-            <Link to={"/"} onClick={logoutHandler}>
-              Logout
-            </Link>
-          ) : (
-            <Link to={"/login"}>Signup</Link>
-          )}
-        </article> */}
-        <article>
-          <Link
-            className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
-            to={"/"}
-          >
-            Home
-          </Link>
-          <Link
-            className={`nav-link ${
-              location.pathname === "/about" ? "active" : ""
-            }`}
-            to={"/about"}
-          >
-            About
-          </Link>
-          {isAuthenticated ? (
+      <heeader>
+        <nav className="header">
+          <div>
+            <h2>Todo App.</h2>
+          </div>
+
+          <article>
             <Link
               className={`nav-link ${
-                location.pathname === "/logout" ? "active" : ""
+                location.pathname === "/" ? "active" : ""
               }`}
               to={"/"}
-              // disabled={loading}
-              onClick={logoutHandler}
             >
-              Logout
+              Home
             </Link>
-          ) : (
             <Link
               className={`nav-link ${
-                location.pathname === "/login" ? "active" : ""
+                location.pathname === "/about" ? "active" : ""
               }`}
-              to={"/login"}
+              to={"/about"}
             >
-              Signup
+              About
             </Link>
-          )}
-        </article>
-      </nav>
+            {isAuthenticated ? (
+              <Link
+                className={`nav-link ${
+                  location.pathname === "/logout" ? "active" : ""
+                }`}
+                to={"/"}
+                // disabled={loading}
+                onClick={logoutHandler}
+              >
+                Logout
+              </Link>
+            ) : (
+              <Link
+                className={`nav-link ${
+                  location.pathname === "/login" ? "active" : ""
+                }`}
+                to={"/login"}
+              >
+                Signup
+              </Link>
+            )}
+          </article>
+        </nav>
+      </heeader>
     </>
   );
 };

@@ -1,9 +1,3 @@
-body {
-  background: #c1bdba;
-  font-family: "Titillium Web", sans-serif;
-  overflow: hidden;
-}
-
 a {
   text-decoration: none;
   color: #1ab188;
@@ -32,9 +26,11 @@ a:hover {
   justify-content: center;
   /* width: 100%; */
 }
+
 .tab-group li {
   width: 100vh;
 }
+
 .tab-group:after {
   content: "";
   display: table;
